@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/widgets/image_input.dart';
+
 class AddPlaceScreen extends StatefulWidget {
   static const routeName = '/add-place-screen';
   @override
@@ -30,11 +32,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(),
-                  TextButton(
-                    child: Text('Submit'),
-                    onPressed: () {},
-                  )
+                  ImageInput(),
                 ],
               ),
             )),
@@ -45,6 +43,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             style: ElevatedButton.styleFrom(
               elevation: 0,
               primary: Theme.of(context).accentColor,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             onPressed: () {},
           ),
