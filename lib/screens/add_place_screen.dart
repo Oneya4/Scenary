@@ -27,9 +27,11 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     decoration: InputDecoration(labelText: 'Title'),
                     controller: _titleController,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(),
-                  TextButton(onPressed: (){}, child: )
+                  TextButton(onPressed: () {}, child: Text('Submit'))
                 ],
               ),
             )),

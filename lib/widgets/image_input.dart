@@ -17,7 +17,9 @@ class _ImageInputState extends State<ImageInput> {
           height: 100,
           decoration:
               BoxDecoration(border: Border.all(width: 1, color: Colors.grey)),
-          child: _storedImage != null ? Image.file() : Text('No Image Taken'),
+          child: _storedImage != null
+              ? Image.file(_storedImage!)
+              : Text('No Image Taken'),
           alignment: Alignment.center,
         ),
         TextButton(
