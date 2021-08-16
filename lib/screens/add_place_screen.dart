@@ -31,7 +31,10 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     height: 10,
                   ),
                   Container(),
-                  TextButton(onPressed: () {}, child: Text('Submit'))
+                  TextButton(
+                    child: Text('Submit'),
+                    onPressed: () {},
+                  )
                 ],
               ),
             )),
