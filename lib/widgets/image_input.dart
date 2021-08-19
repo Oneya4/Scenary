@@ -30,7 +30,7 @@ class _ImageInputState extends State<ImageInput> {
     });
     final appDir = await syspths.getApplicationDocumentsDirectory();
     final fileName = path.basename(imageFile.path);
-    final savedImage = imageFile.saveTo('${appDir.path}/$fileName');
+    final savedImage = _storedImage!.copy('${appDir.path}/$fileName');
     widget.onSelectImage(savedImage);
   }
 

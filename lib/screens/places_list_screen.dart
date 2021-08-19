@@ -20,11 +20,10 @@ class PlacesListScreen extends StatelessWidget {
         ],
       ),
       body: Consumer<Places>(
-        child: Center(
-          child: const Text('You haven\'t added any places yet.'),
-        ),
-        builder: (ctx, placeData, ch) => placeData.items.length <= 0
-            ? ch!
+        builder: (ctx, placeData, _) => placeData.items.length <= 0
+            ? Center(
+                child: const Text('You haven\'t added any places yet.'),
+              )
             : ListView.builder(
                 itemCount: placeData.items.length,
                 itemBuilder: (ctx, index) => ListTile(
