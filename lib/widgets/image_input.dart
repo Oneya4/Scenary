@@ -30,7 +30,7 @@ class _ImageInputState extends State<ImageInput> {
     });
     final appDir = await syspths.getApplicationDocumentsDirectory();
     final fileName = path.basename(imageFile.path);
-    final savedImage = imageFile.saveTo('${appDir.path}/$fileName');
+    final savedImage = await imageFile.saveTo('${appDir.path}/$fileName');
     widget.onSelectImage(savedImage);
   }
 
@@ -43,6 +43,7 @@ class _ImageInputState extends State<ImageInput> {
           height: 140,
           decoration:
               BoxDecoration(border: Border.all(width: 1, color: Colors.grey)),
+          // ignore: unnecessary_null_comparison
           child: _storedImage != null
               ? Image.file(
                   _storedImage!,
