@@ -1,6 +1,6 @@
 # scenery
 
-A new Flutter project.
+A mini flutter app that allows it's user to store pictures of beautiful places they have been to
 
 ## Getting Started
 
