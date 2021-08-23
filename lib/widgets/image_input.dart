@@ -31,6 +31,7 @@ class _ImageInputState extends State<ImageInput> {
     });
     final appDir = await syspths.getApplicationDocumentsDirectory();
     final fileName = path.basename(imageFile.path);
+    //In the line below, we reffer to the already converted path _storedImage after setState. Image Fie will cause an error because it is yet to be resolved
     final savedImage = await _storedImage!.copy('${appDir.path}/$fileName');
     widget.onSelectImage(savedImage);
   }
