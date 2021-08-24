@@ -7,7 +7,6 @@ import '/providers/places.dart';
 class PlacesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Provider.of<Places>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Places'),
@@ -20,22 +19,31 @@ class PlacesListScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Consumer<Places>(
-        child: Center(
-          child: const Text('You haven\'t added any places yet.'),
-        ),
-        builder: (ctx, placeData, ch) => placeData.items.length <= 0
-            ? ch!
-            : ListView.builder(
-                itemCount: placeData.items.length,
-                itemBuilder: (ctx, index) => ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: FileImage(placeData.items[index].image!),
+      body: FutureBuilder(
+        future: Provider.of<Places>(context, listen: false).fetchAndSetPlaces(),
+        builder: (ctx, futureResult) =>
+            futureResult.connectionState == ConnectionState.waiting
+                ? Center(
+                    child: LinearProgressIndicator(),
+                  )
+                : Consumer<Places>(
+                    child: Center(
+                      child: const Text('You haven\'t added any places yet.'),
+                    ),
+                    builder: (ctx, placeData, ch) => placeData.items.length <= 0
+                        ? ch!
+                        : ListView.builder(
+                            itemCount: placeData.items.length,
+                            itemBuilder: (ctx, index) => ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage:
+                                    FileImage(placeData.items[index].image!),
+                              ),
+                              title: Text(placeData.items[index].title!),
+                              onTap: () {},
+                            ),
+                          ),
                   ),
-                  title: Text(placeData.items[index].title!),
-                  onTap: () {},
-                ),
-              ),
       ),
     );
   }

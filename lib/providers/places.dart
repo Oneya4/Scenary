@@ -28,4 +28,17 @@ class Places with ChangeNotifier {
       'image': newPlace.image!.path,
     });
   }
+
+  Future<void> fetchAndSetPlaces() async {
+    final dbPlaceList = await DBHelper.fetchData('places');
+    _items = dbPlaceList
+        .map((place) => Place(
+              id: place['id'],
+              title: place['title'],
+              image: File(place['image']),
+              location: null,
+            ))
+        .toList();
+    notifyListeners();
+  }
 }
