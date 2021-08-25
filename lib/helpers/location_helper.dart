@@ -2,6 +2,6 @@
 
 class LocationHelper {
   static String generateImageLocation({double? latitude, double? longitude}) {
-    return 'https://static-maps.yandex.ru/1.x/?lang=en_US&size=500,350&l=map&ll=$longitude,$latitude&z=15&pt=$longitude,$latitude,round';
+    return 'https://static-maps.yandex.ru/1.x/?lang=en_US&z=20&size=500,350&l=map&ll=$longitude,$latitude&z=15&pt=$longitude,$latitude,round';
   }
 }

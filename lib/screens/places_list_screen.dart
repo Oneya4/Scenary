@@ -24,7 +24,7 @@ class PlacesListScreen extends StatelessWidget {
         builder: (ctx, futureResult) =>
             futureResult.connectionState == ConnectionState.waiting
                 ? Center(
-                    child: LinearProgressIndicator(),
+                    child: CircularProgressIndicator(),
                   )
                 : Consumer<Places>(
                     child: Center(
