@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../models/place.dart';
 import '../helpers/db_helper.dart';
+import '../helpers/location_helper.dart';
 
 class Places with ChangeNotifier {
   List<Place> _items = [];
@@ -12,12 +13,19 @@ class Places with ChangeNotifier {
     return [..._items];
   }
 
-  void addPlace(String setTitle, File takenImage) {
+  Future<void> addPlace(
+      String setTitle, File takenImage, PlaceLocation pickedLocation) async {
+    final pickedAddress = await LocationHelper.getPlaceAddress(
+        pickedLocation.latitude!, pickedLocation.longitude!);
+    final finalLocation = PlaceLocation(
+        latitude: pickedLocation.latitude,
+        longitude: pickedLocation.longitude,
+        address: pickedAddress);
     final newPlace = Place(
       id: DateTime.now().toString(),
       title: setTitle,
       image: takenImage,
-      location: null,
+      location: finalLocation,
     );
     _items.add(newPlace);
     notifyListeners();
@@ -26,6 +34,9 @@ class Places with ChangeNotifier {
       'id': newPlace.id!,
       'title': newPlace.title!,
       'image': newPlace.image!.path,
+      'loc_lat': newPlace.location!.latitude!,
+      'loc_lng': newPlace.location!.longitude!,
+      'address': newPlace.location!.address!,
     });
   }
 
@@ -36,7 +47,11 @@ class Places with ChangeNotifier {
               id: place['id'],
               title: place['title'],
               image: File(place['image']),
-              location: null,
+              location: PlaceLocation(
+                latitude: place['loc_lat'],
+                longitude: place['loc_lng'],
+                address: place['address'],
+              ),
             ))
         .toList();
     notifyListeners();

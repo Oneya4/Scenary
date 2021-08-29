@@ -21,29 +21,31 @@ class PlacesListScreen extends StatelessWidget {
       ),
       body: FutureBuilder(
         future: Provider.of<Places>(context, listen: false).fetchAndSetPlaces(),
-        builder: (ctx, futureResult) =>
-            futureResult.connectionState == ConnectionState.waiting
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Consumer<Places>(
-                    child: Center(
-                      child: const Text('You haven\'t added any places yet.'),
-                    ),
-                    builder: (ctx, placeData, ch) => placeData.items.length <= 0
-                        ? ch!
-                        : ListView.builder(
-                            itemCount: placeData.items.length,
-                            itemBuilder: (ctx, index) => ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage:
-                                    FileImage(placeData.items[index].image!),
-                              ),
-                              title: Text(placeData.items[index].title!),
-                              onTap: () {},
-                            ),
+        builder: (ctx, futureResult) => futureResult.connectionState ==
+                ConnectionState.waiting
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Consumer<Places>(
+                child: Center(
+                  child: const Text('You haven\'t added any places yet.'),
+                ),
+                builder: (ctx, placeData, ch) => placeData.items.length <= 0
+                    ? ch!
+                    : ListView.builder(
+                        itemCount: placeData.items.length,
+                        itemBuilder: (ctx, index) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage:
+                                FileImage(placeData.items[index].image!),
                           ),
-                  ),
+                          title: Text(placeData.items[index].title!),
+                          subtitle:
+                              Text(placeData.items[index].location!.address!),
+                          onTap: () {},
+                        ),
+                      ),
+              ),
       ),
     );
   }
