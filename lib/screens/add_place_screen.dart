@@ -22,6 +22,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     _pickedImage = pickedImage;
   }
 
+  void _selectPlace(double lat, double lng) {}
+
   void _savePlace() {
     if (_titleController.text.isEmpty) {
       return;
@@ -42,25 +44,26 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         children: [
           Expanded(
             child: SingleChildScrollView(
-                child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Title'),
-                    controller: _titleController,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ImageInput(_selectImage),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  LocationInput(),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                      controller: _titleController,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ImageInput(_selectImage),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    LocationInput(_selectPlace),
+                  ],
+                ),
               ),
-            )),
+            ),
           ),
           ElevatedButton.icon(
             icon: Icon(Icons.add),
