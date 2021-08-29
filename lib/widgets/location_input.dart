@@ -30,7 +30,13 @@ class _LocationInputState extends State<LocationInput> {
   Future<void> _getUserCurrentLocation() async {
     try {
       final locData = await Location().getLocation();
-      _showPreview(locData.latitude!, locData.longitude!);
+      final staticMapImage = LocationHelper.generateImageLocation(
+        latitude: locData.latitude,
+        longitude: locData.longitude,
+      );
+      setState(() {
+        _previewImageUrl = staticMapImage;
+      });
       widget.onSelectPlace(locData.latitude, locData.longitude);
     } catch (error) {
       return;
