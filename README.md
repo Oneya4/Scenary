@@ -1,6 +1,10 @@
 # scenery
 
-A mini flutter app that allows it's user to store pictures of beautiful places they have been to
+A mini flutter app that allows it's user to store pictures of beautiful places they have visited.
+ *****TO USE****
+1. **Go to you AndroidManifest.xml amd replace the android:value"YOUR_API_KEY" under <meta-data> with a key you set up from Google.**
+
+2. **In the location_helper.dart, input your key in the const GOOGLE_API_KEY=''**
 
 ## Getting Started
 
