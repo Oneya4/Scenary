@@ -75,7 +75,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             label: Text('Add Place'),
             style: ElevatedButton.styleFrom(
               elevation: 0,
-              primary: Theme.of(context).accentColor,
+              primary: Theme.of(context).colorScheme.secondary,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             onPressed: _savePlace,
