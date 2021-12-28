@@ -61,15 +61,16 @@ class _LocationInputState extends State<LocationInput> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size.height;
+
     return Column(
       children: [
         Container(
           decoration: BoxDecoration(
-              border: Border.all(
-            width: 1,
-            color: Colors.grey,
-          )),
-          height: 170,
+            border: Border.all(width: 1, color: Colors.grey),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          height: deviceSize * .3,
           width: double.infinity,
           alignment: Alignment.center,
           child: _previewImageUrl == null
@@ -77,10 +78,14 @@ class _LocationInputState extends State<LocationInput> {
                   'No Location Chosen Yet',
                   textAlign: TextAlign.center,
                 )
-              : Image.network(
-                  _previewImageUrl!,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.network(
+                    _previewImageUrl!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
                 ),
         ),
         Row(
