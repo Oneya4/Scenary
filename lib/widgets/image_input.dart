@@ -38,18 +38,25 @@ class _ImageInputState extends State<ImageInput> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
+
     return Row(
       children: [
         Container(
-          width: 140,
-          height: 140,
-          decoration:
-              BoxDecoration(border: Border.all(width: 1, color: Colors.grey)),
+          width: deviceSize.width * .62,
+          height: deviceSize.height * .33,
+          decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Colors.grey),
+            borderRadius: BorderRadius.circular(18),
+          ),
           child: _storedImage != null
-              ? Image.file(
-                  _storedImage!,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: Image.file(
+                    _storedImage!,
+                    fit: BoxFit.cover,
+                    width: double.maxFinite,
+                  ),
                 )
               : Text('No Image Taken', textAlign: TextAlign.center),
           alignment: Alignment.center,
