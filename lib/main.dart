@@ -23,10 +23,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Great Places',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo)
-              .copyWith(secondary: Colors.amber),
-        ),
+        theme: ThemeData.dark(),
+        // ThemeData(
+        //   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo)
+        //       .copyWith(secondary: Colors.amber),
+        // ),
         home: PlacesListScreen(),
         routes: {
           AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
