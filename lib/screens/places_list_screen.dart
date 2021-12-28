@@ -13,14 +13,8 @@ class PlacesListScreen extends StatelessWidget {
     return Scaffold(
       // appBar: AppBar(
       //   title: Text('Your Places'),
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(Icons.add),
-      //       onPressed: () {
-      //         Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
-      //       },
-      //     ),
-      //   ],
+      //   centerTitle: true,
+      //   backgroundColor: Colors.transparent,
       // ),
       body: Stack(
         children: [
@@ -28,19 +22,19 @@ class PlacesListScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-              child: Container(
-                height: deviceHeight * .35,
-                decoration: BoxDecoration(color: Colors.black87),
+            child: Container(
+              height: deviceHeight * .32,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      'https://media-magazine.trivago.com/wp-content/uploads/2017/05/28132442/cook-islands-resorts.jpg'),
+                ),
               ),
             ),
           ),
           Positioned(
-            top: 240,
+            top: 250,
             left: 0,
             right: 0,
             child: ClipRRect(
@@ -49,8 +43,10 @@ class PlacesListScreen extends StatelessWidget {
                 topRight: Radius.circular(30),
               ),
               child: Container(
-                height: deviceHeight * .75,
-                decoration: BoxDecoration(color: Colors.grey),
+                height: deviceHeight * .71,
+                padding: EdgeInsets.only(top: 30),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.onSecondary),
                 child: FutureBuilder(
                   future: Provider.of<Places>(context, listen: false)
                       .fetchAndSetPlaces(),
