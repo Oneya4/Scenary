@@ -42,10 +42,11 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add a New Place'),
+        title: Text('New Zabe'),
+        centerTitle: true,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: SingleChildScrollView(
@@ -53,12 +54,13 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
-                    TextField(
+                    TextFormField(
                       decoration: InputDecoration(labelText: 'Title'),
                       controller: _titleController,
+                      textCapitalization: TextCapitalization.sentences,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     ImageInput(_selectImage),
                     SizedBox(
@@ -74,7 +76,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             icon: Icon(Icons.add),
             label: Text('Add Place'),
             style: ElevatedButton.styleFrom(
-              elevation: 0,
+              shape: StadiumBorder(),
+              fixedSize: Size(190, 45),
               primary: Theme.of(context).colorScheme.secondary,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
