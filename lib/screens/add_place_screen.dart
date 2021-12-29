@@ -58,7 +58,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                       shape: StadiumBorder(),
                       elevation: 5,
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 8, 0, 8),
+                        padding: const EdgeInsets.fromLTRB(20, 6, 0, 6),
                         child: TextField(
                           decoration: InputDecoration(
                             hintText: 'Title',
