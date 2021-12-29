@@ -54,10 +54,20 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
-                    TextFormField(
-                      decoration: InputDecoration(labelText: 'Title'),
-                      controller: _titleController,
-                      textCapitalization: TextCapitalization.sentences,
+                    Card(
+                      shape: StadiumBorder(),
+                      elevation: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 8, 0, 8),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Title',
+                            border: InputBorder.none,
+                          ),
+                          controller: _titleController,
+                          textCapitalization: TextCapitalization.sentences,
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 20,
