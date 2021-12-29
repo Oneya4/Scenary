@@ -44,7 +44,7 @@ class PlacesListScreen extends StatelessWidget {
               ),
               child: Container(
                 height: deviceHeight * .71,
-                padding: EdgeInsets.only(top: 30),
+                // padding: EdgeInsets.only(top: 30),
                 decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.onSecondary),
                 child: FutureBuilder(
@@ -66,20 +66,39 @@ class PlacesListScreen extends StatelessWidget {
                               : ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   itemCount: placeData.items.length,
-                                  itemBuilder: (ctx, index) => ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundImage: FileImage(
-                                          placeData.items[index].image!),
-                                    ),
-                                    title: Text(placeData.items[index].title!),
-                                    subtitle: Text(placeData
-                                        .items[index].location!.address!),
-                                    onTap: () {
-                                      Navigator.of(context).pushNamed(
-                                        PlaceDetailScreen.routeName,
-                                        arguments: placeData.items[index].id,
-                                      );
-                                    },
+                                  itemBuilder: (ctx, index) => Column(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(8, 0, 8, 5),
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.teal,
+                                            width: 2,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(18),
+                                        ),
+                                        child: ListTile(
+                                          leading: CircleAvatar(
+                                            backgroundImage: FileImage(
+                                                placeData.items[index].image!),
+                                          ),
+                                          title: Text(
+                                              placeData.items[index].title!),
+                                          subtitle: Text(placeData
+                                              .items[index].location!.address!),
+                                          onTap: () {
+                                            Navigator.of(context).pushNamed(
+                                              PlaceDetailScreen.routeName,
+                                              arguments:
+                                                  placeData.items[index].id,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                         ),
