@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '/screens/add_place_screen.dart';
 import '/providers/places.dart';
@@ -24,11 +25,12 @@ class PlacesListScreen extends StatelessWidget {
             right: 0,
             child: Container(
               height: deviceHeight * .32,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://media-magazine.trivago.com/wp-content/uploads/2017/05/28132442/cook-islands-resorts.jpg'),
+              child: CachedNetworkImage(
+                imageUrl:
+                    'https://media-magazine.trivago.com/wp-content/uploads/2017/05/28132442/cook-islands-resorts.jpg',
+                fit: BoxFit.cover,
+                progressIndicatorBuilder: (context, url, progress) => Center(
+                  child: LinearProgressIndicator(value: progress.progress),
                 ),
               ),
             ),
