@@ -44,6 +44,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       appBar: AppBar(
         title: Text('New Zabe'),
         centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Column(
         // crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -82,16 +84,19 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               ),
             ),
           ),
-          ElevatedButton.icon(
-            icon: Icon(Icons.add),
-            label: Text('Add Place'),
-            style: ElevatedButton.styleFrom(
-              shape: StadiumBorder(),
-              fixedSize: Size(190, 45),
-              primary: Theme.of(context).colorScheme.secondary,
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: ElevatedButton.icon(
+              icon: Icon(Icons.add),
+              label: Text('Add Place'),
+              style: ElevatedButton.styleFrom(
+                shape: StadiumBorder(),
+                fixedSize: Size(190, 45),
+                primary: Theme.of(context).colorScheme.secondary,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              onPressed: _savePlace,
             ),
-            onPressed: _savePlace,
           ),
         ],
       ),
