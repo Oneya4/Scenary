@@ -31,6 +31,8 @@ class _MapsScreenState extends State<MapsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Map'),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
         actions: [
           if (widget.isSelecting)
             IconButton(
