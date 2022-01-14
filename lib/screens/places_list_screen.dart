@@ -80,7 +80,7 @@ class PlacesListScreen extends StatelessWidget {
                                             width: 2,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(18),
+                                              BorderRadius.circular(30),
                                         ),
                                         child: ListTile(
                                           leading: CircleAvatar(
