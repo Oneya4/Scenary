@@ -85,7 +85,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 5),
             child: ElevatedButton.icon(
               icon: Icon(Icons.add),
               label: Text('Add Place'),
