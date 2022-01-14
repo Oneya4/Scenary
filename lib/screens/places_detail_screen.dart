@@ -46,11 +46,19 @@ class PlaceDetailScreen extends StatelessWidget {
               ElevatedButton(
                 child: Text('Other places like this'),
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(shape: StadiumBorder()),
+                style: ElevatedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  elevation: 10,
+                  enableFeedback: true,
+                ),
               ),
               OutlinedButton(
                 child: Text('View on Map'),
-                style: OutlinedButton.styleFrom(shape: StadiumBorder()),
+                style: OutlinedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  elevation: 10,
+                  enableFeedback: true,
+                ),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
