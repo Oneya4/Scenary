@@ -22,12 +22,7 @@ class PlaceDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(80),
-              bottomRight: Radius.circular(80),
-            ),
-            child: Container(
+          Container(
               height: deviceSize.height * .65,
               width: double.infinity,
               margin: EdgeInsets.only(bottom: 20),
@@ -37,7 +32,7 @@ class PlaceDetailScreen extends StatelessWidget {
                 width: double.infinity,
               ),
             ),
-          ),
+          
           Text(selectedPlace.location!.address!, textAlign: TextAlign.center),
           SizedBox(height: 10),
           Row(
