@@ -40,65 +40,67 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('New Zabe'),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    Card(
-                      shape: StadiumBorder(),
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 6, 0, 6),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Title',
-                            border: InputBorder.none,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('New Zabe'),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: Column(
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      Card(
+                        shape: StadiumBorder(),
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 6, 0, 6),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Title',
+                              border: InputBorder.none,
+                            ),
+                            controller: _titleController,
+                            textCapitalization: TextCapitalization.sentences,
                           ),
-                          controller: _titleController,
-                          textCapitalization: TextCapitalization.sentences,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ImageInput(_selectImage),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    LocationInput(_selectPlace),
-                  ],
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ImageInput(_selectImage),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      LocationInput(_selectPlace),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 5),
-            child: ElevatedButton.icon(
-              icon: Icon(Icons.add),
-              label: Text('Add Place'),
-              style: ElevatedButton.styleFrom(
-                shape: StadiumBorder(),
-                fixedSize: Size(190, 45),
-                primary: Theme.of(context).colorScheme.secondary,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: ElevatedButton.icon(
+                icon: Icon(Icons.add),
+                label: Text('Add Place'),
+                style: ElevatedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  fixedSize: Size(190, 45),
+                  primary: Theme.of(context).colorScheme.secondary,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                onPressed: _savePlace,
               ),
-              onPressed: _savePlace,
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -12,11 +12,6 @@ class PlacesListScreen extends StatelessWidget {
     final deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Your Places'),
-      //   centerTitle: true,
-      //   backgroundColor: Colors.transparent,
-      // ),
       body: Stack(
         children: [
           Positioned(

@@ -28,44 +28,46 @@ class _MapsScreenState extends State<MapsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Map'),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        actions: [
-          if (widget.isSelecting)
-            IconButton(
-              icon: Icon(Icons.check),
-              onPressed: _pickedLocation == null
-                  ? null
-                  : () {
-                      Navigator.of(context).pop(_pickedLocation);
-                    },
-            )
-        ],
-      ),
-      body: GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: LatLng(
-            widget.initialLocation.latitude!,
-            widget.initialLocation.longitude!,
-          ),
-          zoom: 16,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Map'),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          actions: [
+            if (widget.isSelecting)
+              IconButton(
+                icon: Icon(Icons.check),
+                onPressed: _pickedLocation == null
+                    ? null
+                    : () {
+                        Navigator.of(context).pop(_pickedLocation);
+                      },
+              )
+          ],
         ),
-        onTap: widget.isSelecting ? _selectLocation : null,
-        markers: (_pickedLocation == null && widget.isSelecting)
-            ? {}
-            : {
-                Marker(
-                  markerId: MarkerId('m1'),
-                  position: _pickedLocation ??
-                      LatLng(
-                        widget.initialLocation.latitude!,
-                        widget.initialLocation.longitude!,
-                      ),
-                ),
-              },
+        body: GoogleMap(
+          initialCameraPosition: CameraPosition(
+            target: LatLng(
+              widget.initialLocation.latitude!,
+              widget.initialLocation.longitude!,
+            ),
+            zoom: 16,
+          ),
+          onTap: widget.isSelecting ? _selectLocation : null,
+          markers: (_pickedLocation == null && widget.isSelecting)
+              ? {}
+              : {
+                  Marker(
+                    markerId: MarkerId('m1'),
+                    position: _pickedLocation ??
+                        LatLng(
+                          widget.initialLocation.latitude!,
+                          widget.initialLocation.longitude!,
+                        ),
+                  ),
+                },
+        ),
       ),
     );
   }
